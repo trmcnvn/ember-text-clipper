@@ -1,0 +1,11 @@
+{{#if isExpanded}}
+  {{safeText}}
+  {{#if canCollapse}}
+    <a href="#" {{action "toggleExpand"}}>{{collapseText}}</a>
+  {{/if}}
+{{else}}
+  {{truncated}}
+  {{#if canExpand}}
+    <a href="#" {{action "toggleExpand"}}>{{expandText}}</a>
+  {{/if}}
+{{/if}}
