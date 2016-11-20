@@ -4,8 +4,9 @@
 [![Build Status](https://travis-ci.org/vevix/ember-text-clipper.svg?branch=master)](https://travis-ci.org/vevix/ember-text-clipper)
 
 An [Ember CLI](https://ember-cli.com/) addon for [text-clipper](https://github.com/arendjr/text-clipper).
+Which is a performant and HTML-safe text clipper.
 
-_Currently using [text-clipper](https://github.com/vevix/text-clipper) fork._
+_Currently using my [text-clipper](https://github.com/vevix/text-clipper) fork._
 
 ## Installation
 
