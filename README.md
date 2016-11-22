@@ -2,6 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/ember-text-clipper.svg)](http://badge.fury.io/js/ember-text-clipper)
 [![Build Status](https://travis-ci.org/vevix/ember-text-clipper.svg?branch=master)](https://travis-ci.org/vevix/ember-text-clipper)
+[![Ember Observer Score](https://emberobserver.com/badges/ember-text-clipper.svg)](https://emberobserver.com/addons/ember-text-clipper)
 
 An [Ember CLI](https://ember-cli.com/) addon for [text-clipper](https://github.com/arendjr/text-clipper).
 Which is a performant and HTML-safe text clipper.
