@@ -9,27 +9,33 @@ test('it can be expanded and collapsed', function(assert) {
   this.set('text', 'Hello, World!');
   this.render(hbs`{{text-clipper text length=6}}`);
 
-  assert.equal(this.$().text().trim().replace(/(\r\n|\n|\r|\t)/gm, ''), 'Hello...    more');
+  assert.equal(this.$().text().trim().replace(/(\r\n|\n|\r|\t)/gm, '').replace(/\s{2,}/, ' '), 'Hello... more');
 
   this.$('a').click();
-  assert.equal(this.$().text().trim().replace(/(\r\n|\n|\r|\t)/gm, ''), 'Hello, World!    less');
+  assert.equal(this.$().text().trim().replace(/(\r\n|\n|\r|\t)/gm, '').replace(/\s{2,}/, ' '), 'Hello, World! less');
 
   this.$('a').click();
-  assert.equal(this.$().text().trim().replace(/(\r\n|\n|\r|\t)/gm, ''), 'Hello...    more');
+  assert.equal(this.$().text().trim().replace(/(\r\n|\n|\r|\t)/gm, '').replace(/\s{2,}/, ' '), 'Hello... more');
 });
 
 test('action text can be replaced', function(assert) {
   this.set('text', 'Hello, World!');
   this.render(hbs`{{text-clipper text length=6 expandText="expand" collapseText="collapse"}}`);
 
-  assert.equal(this.$().text().trim().replace(/(\r\n|\n|\r|\t)/gm, ''), 'Hello...    expand');
+  assert.equal(this.$().text().trim().replace(/(\r\n|\n|\r|\t)/gm, '').replace(/\s{2,}/, ' '), 'Hello... expand');
 
   this.$('a').click();
-  assert.equal(this.$().text().trim().replace(/(\r\n|\n|\r|\t)/gm, ''), 'Hello, World!    collapse');
+  assert.equal(this.$().text().trim().replace(/(\r\n|\n|\r|\t)/gm, '').replace(/\s{2,}/, ' '), 'Hello, World! collapse');
 });
 
 test('expansion can be disabled', function(assert) {
   this.set('text', 'Hello, World!');
   this.render(hbs`{{text-clipper text length=6 canExpand=false}}`);
-  assert.equal(this.$().text().trim().replace(/(\r\n|\n|\r|\t)/gm, ''), 'Hello...');
+  assert.equal(this.$().text().trim().replace(/(\r\n|\n|\r|\t)/gm, '').replace(/\s{2,}/, ' '), 'Hello...');
+});
+
+test('dont show actions if text is shorter than length', function(assert) {
+  this.set('text', 'Hello, World!');
+  this.render(hbs`{{text-clipper text length=13}}`);
+  assert.equal(this.$().text().trim().replace(/(\r\n|\n|\r|\t)/gm, '').replace(/\s{2,}/, ' '), 'Hello, World!');
 });

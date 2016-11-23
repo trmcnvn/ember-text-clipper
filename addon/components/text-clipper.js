@@ -23,11 +23,15 @@ const TextClipperComponent = Component.extend({
     }
   }).readOnly(),
 
-  init() {
+  didReceiveAttrs() {
     this._super(...arguments);
     set(this, 'canCollapse', get(this, 'canCollapse') || get(this, 'canExpand'));
     set(this, 'options', assign(this._defaultOptions(), get(this, 'options') || {}));
     set(this, 'safeText', this._isHTML() ? htmlSafe(get(this, 'text')) : get(this, 'text'));
+
+    if (get(this, 'text').length > get(this, 'length')) {
+      set(this, 'isTruncated', true);
+    }
   },
 
   _defaultOptions() {
