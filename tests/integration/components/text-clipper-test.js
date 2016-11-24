@@ -39,3 +39,9 @@ test('dont show actions if text is shorter than length', function(assert) {
   this.render(hbs`{{text-clipper text length=13}}`);
   assert.equal(this.$().text().trim().replace(/(\r\n|\n|\r|\t)/gm, '').replace(/\s{2,}/, ' '), 'Hello, World!');
 });
+
+test('can accept an empty text property', function(assert) {
+  this.set('text', undefined);
+  this.render(hbs`{{text-clipper text length=42}}`);
+  assert.equal(this.$().text().trim(), '');
+});

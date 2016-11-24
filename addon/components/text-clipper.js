@@ -29,7 +29,7 @@ const TextClipperComponent = Component.extend({
     set(this, 'options', assign(this._defaultOptions(), get(this, 'options') || {}));
     set(this, 'safeText', this._isHTML() ? htmlSafe(get(this, 'text')) : get(this, 'text'));
 
-    if (get(this, 'text').length > get(this, 'length')) {
+    if (get(this, 'text') && get(this, 'text').length > get(this, 'length')) {
       set(this, 'isTruncated', true);
     }
   },
