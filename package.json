@@ -1,6 +1,6 @@
 {
   "name": "ember-text-clipper",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Ember CLI addon for text-clipper.",
   "directories": {
     "doc": "doc",
