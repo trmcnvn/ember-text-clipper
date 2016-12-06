@@ -7,7 +7,11 @@
   {{truncated}}
   {{#if isTruncated}}
     {{#if canExpand}}
-      <a href="#" {{action "toggleExpand"}}>{{expandText}}</a>
+      {{#if expandHref}}
+        <a href={{expandHref}}>{{expandText}}</a>
+      {{else}}
+        <a href="#" {{action "toggleExpand"}}>{{expandText}}</a>
+      {{/if}}
     {{/if}}
   {{/if}}
 {{/if}}

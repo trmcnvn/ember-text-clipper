@@ -45,3 +45,9 @@ test('can accept an empty text property', function(assert) {
   this.render(hbs`{{text-clipper text length=42}}`);
   assert.equal(this.$().text().trim(), '');
 });
+
+test('can change truncation action to href', function(assert) {
+  this.set('text', 'Hello, World!');
+  this.render(hbs`{{text-clipper text length=5 expandHref="/test"}}`);
+  assert.equal(this.$().find('a').attr('href'), '/test');
+});

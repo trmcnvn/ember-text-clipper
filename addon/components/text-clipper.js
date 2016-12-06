@@ -11,6 +11,7 @@ const TextClipperComponent = Component.extend({
   layout,
   isExpanded: false,
   canExpand: true,
+  expandHref: undefined,
   expandText: 'more',
   collapseText: 'less',
   length: 200,
