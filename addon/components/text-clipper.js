@@ -6,6 +6,7 @@ import { htmlSafe } from 'ember-string';
 import { assign } from 'ember-platform';
 import layout from '../templates/components/text-clipper';
 import clip from 'clip';
+import Ember from 'ember';
 
 const TextClipperComponent = Component.extend({
   layout,
@@ -30,7 +31,11 @@ const TextClipperComponent = Component.extend({
     set(this, 'options', assign(this._defaultOptions(), get(this, 'options') || {}));
     set(this, 'safeText', this._isHTML() ? htmlSafe(get(this, 'text')) : get(this, 'text'));
 
-    if (get(this, 'text') && get(this, 'text').length > get(this, 'length')) {
+    let length = get(this, 'text.length');
+    if (Ember.String.isHTMLSafe(get(this, 'text'))) {
+      length = get(this, 'text.string.length');
+    }
+    if (get(this, 'text') && length > get(this, 'length')) {
       set(this, 'isTruncated', true);
     }
   },
@@ -46,7 +51,7 @@ const TextClipperComponent = Component.extend({
   },
 
   _isHTML() {
-    return get(this, 'options.html') === true;
+    return get(this, 'options.html');
   },
 
   actions: {

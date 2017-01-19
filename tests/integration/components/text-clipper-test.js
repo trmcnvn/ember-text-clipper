@@ -1,5 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import { htmlSafe } from 'ember-string';
 
 moduleForComponent('text-clipper', 'Integration | Component | text clipper', {
   integration: true
@@ -50,4 +51,10 @@ test('can change truncation action to href', function(assert) {
   this.set('text', 'Hello, World!');
   this.render(hbs`{{text-clipper text length=5 expandHref="/test"}}`);
   assert.equal(this.$().find('a').attr('href'), '/test');
+});
+
+test('can support Ember.String.htmlSafe text', function(assert) {
+  this.set('text', htmlSafe('Hello, World!'));
+  this.render(hbs`{{text-clipper text length=2}}`);
+  assert.ok(this.$().find('a:contains("more")').length);
 });
